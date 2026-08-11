@@ -1,0 +1,23 @@
+# Working directory holding rank lists, mappings, qrels.
+base_dir: ${oc.env:MARQUIS_RETRIEVAL_BASE_DIR}
+queries_file: ${oc.env:MARQUIS_RETRIEVAL_QUERIES_FILE,${oc.env:MAGMAR_QUERIES_JSONL,${data.base_dir}/MAGMaR2026_queries.jsonl}}
+
+# Artifact paths under base_dir (single source of truth; override individually if needed)
+expanded_queries: ${data.base_dir}/expanded_queries.json
+subqueries_jsonl: ${data.base_dir}/subqueries.jsonl
+subquery_mapping: ${data.base_dir}/subquery_mapping.json
+subquery_results: ${data.base_dir}/rank-subqueries.txt
+baseline_results: ${data.base_dir}/rank-baseline.json
+reference: ${oc.env:MARQUIS_REFERENCE,${data.base_dir}/reference.json}
+qrels: ${data.base_dir}/qrels.txt
+
+# --- QA-system retrieval path (OmniEmbed `retrieve` command) ---
+# Independent of the tevatron first-stage search above; this feeds the QA /
+# generation system, not the fusion pipeline. Its output is its own artifact.
+video_links: ${data.base_dir}/video_links.json
+video_dir: ${oc.env:VIDEO_DIR,${data.base_dir}/videos}
+audio_dir: ${oc.env:AUDIO_DIR,${data.base_dir}/audio}
+retrieved_videos: ${data.base_dir}/retrieved_videos.json
+
+# Restrict to a subset of queries (comma string / list / null = all)
+query_ids: null

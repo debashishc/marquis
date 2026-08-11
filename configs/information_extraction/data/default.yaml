@@ -1,0 +1,35 @@
+# Raw inputs
+video_root: ${oc.env:MAGMAR_VIDEO_ROOT}
+# MicroVENT WebDataset video shards (<root>/videos/catalog.csv + shard_*.tar).
+# `prepare-videos` streams loose {video_id}.mp4 out of here into `video_root`.
+video_shards_root: ${oc.env:MARQUIS_VIDEO_SHARDS_ROOT}
+# Loose audio dir that QA's Whisper transcribes ({chunk_id}{audio_ext}).
+# `prepare-audio` streams these out of <video_shards_root>/audio/*.tar.
+audio_root: ${oc.env:MARQUIS_AUDIO_ROOT,${.video_root}/audio}
+audio_ext: ${oc.env:MARQUIS_AUDIO_EXT,.m4a}
+queries_jsonl: ${oc.env:MAGMAR_QUERIES_JSONL}
+expanded_queries: ${oc.env:MAGMAR_EXPANDED_QUERIES}
+# reference.json: topic_id → relevant chunk ids. `build-query-mapping` joins it
+# to queries (by topic_id) to produce `query_video_mapping` below.
+reference: ${oc.env:MARQUIS_REFERENCE}
+# query_id→video selection table (extract / qa read this directly).
+query_video_mapping: ${oc.env:MAGMAR_QUERY_VIDEO_MAPPING,${oc.env:MARQUIS_QUERY_VIDEO_MAPPING}}
+
+# Downstream inputs
+artifacts_jsonl: null  # general_notes.jsonl / claims jsonl (predict/calibrate input)
+notes: null            # general notes JSONL (packets general-note stream)
+claims: null           # claims JSONL (packets query-based stream)
+unli_jsonl: null       # predictions JSONL (calibrate stage input)
+
+# QA
+qa_queries: ${oc.env:MAGMAR_QA_QUERIES}       # queries-with-subqueries JSONL for the qa runners
+qa_output: answers.jsonl
+subqueries_output: subqueries.json  # qa-decompose output
+# {video_id: transcript} cache written by `prepare-transcripts`. When this file
+# exists the qa runners read transcripts from it and skip loading Whisper (so
+# Whisper never shares the GPU with the QA VLM); otherwise they fall back to a
+# live Whisper model. null → always use live Whisper.
+transcripts: ${oc.env:MARQUIS_QA_TRANSCRIPTS,null}
+
+# Restrict to a subset of queries (comma string / list / null = all)
+query_ids: '1'

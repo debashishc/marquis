@@ -1,0 +1,6 @@
+# Qwen scorer (alternative Step-1.5 backend; prompts the VLM for a 0-1 score).
+backend: qwen_score
+model: ${oc.env:MARQUIS_VLM_MODEL,Qwen/Qwen3.5-9B}
+download_dir: ${oc.env:HF_HOME,null}
+base_model: null
+lora_path: null

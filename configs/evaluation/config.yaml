@@ -1,0 +1,16 @@
+defaults:
+  - data: default
+  - model: none
+  - runtime: default
+  - output: default
+  - launcher: local
+  - optional experiment: null
+  - _self_
+
+stage: evaluation
+task: null
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null

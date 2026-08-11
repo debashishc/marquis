@@ -1,0 +1,11 @@
+{
+  "fact": "The video shows flooding in downtown Austin on March 15, 2025.",
+  "confidence": 0.85,
+  "evidence": "Visual evidence of water covering street intersections.",
+  "source": "video_visual",
+  "timestamp": [42.0, 58.0],
+  "video_id": "test_vid_001",
+  "video_path": "examples/videos/test_vid_001.mp4",
+  "caption": "The scene shows water rushing through a city street.",
+  "ocr": ""
+}

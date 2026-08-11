@@ -1,0 +1,31 @@
+{
+  "1": {
+    "original_query": "Help me compile parliamentary and vote share statistics on the 2025 Canadian Federal elections. This should include how many seats each party won or lost, how many total seats each party now has, any information on total (popular) vote share available for the major parties and for any specific candidates for which it is available. Any demographic breakdowns of support for particular parties or candidates would also be helpful. For all statistics, please also include as much detail as possible on their source, as this helps me get a sense for how credible they are.",
+    "title": "2025_canadian_federal_election",
+    "sub_queries": [
+      "2025 Canadian federal election final seat count by party",
+      "Elections Canada 2025 election official results dataset",
+      "2025 Canadian federal election popular vote share by party",
+      "2025 Canadian federal election seat changes by party",
+      "2025 Canadian federal election total seats by party",
+      "2025 Canadian federal election candidate vote totals",
+      "Elections Canada 2025 election data methodology",
+      "2025 Canadian federal election demographic voting breakdown",
+      "2025 Canadian federal election age group voting patterns",
+      "2025 Canadian federal election gender voting patterns",
+      "2025 Canadian federal election regional vote share by province",
+      "2025 Canadian federal election urban rural voting split",
+      "2025 Canadian federal election ethnic group voting data",
+      "2025 Canadian federal election education level voting patterns",
+      "Elections Canada 2025 election data source documentation",
+      "2025 Canadian federal election voter turnout statistics",
+      "2025 Canadian federal election advance poll results",
+      "2025 Canadian federal election mail-in ballot statistics",
+      "2025 Canadian federal election swing analysis by riding",
+      "2025 Canadian federal election independent candidate results",
+      "2025 Canadian federal election minor party vote share",
+      "2025 Canadian federal election data verification reports",
+      "2025 Canadian federal election preliminary vs final results"
+    ]
+  }
+}

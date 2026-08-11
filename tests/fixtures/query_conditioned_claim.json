@@ -1,0 +1,13 @@
+{
+  "claim_id": "qc-1-hol6y3QwX2Y-001",
+  "query_id": "1",
+  "video_id": "hol6y3QwX2Y",
+  "topic": "2025_Canadian_Federal_Election",
+  "claim": "The broadcast covers the results of the 2025 Canadian federal election with a segment titled Decision Canada.",
+  "confidence": 0.85,
+  "evidence": "News anchor presenting election results with Decision Canada branding visible.",
+  "source": "video_visual",
+  "timestamp": [0.0, 30.0],
+  "source_path": "examples/videos/hol6y3QwX2Y.mp4",
+  "is_post_grounded": false
+}

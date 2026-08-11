@@ -1,0 +1,9 @@
+# Claims input (baseline / ginger)
+base_dir: .
+claims_path: ${oc.env:MARQUIS_CLAIMS_PATH,outputs/query_claims_single/query_conditioned_claims.jsonl}
+query_ids: '1'
+
+# QA inputs (qa strategy): answers_<qa_file>.json lives under <qa_dir>/qa_outputs/
+qa_dir: ${oc.env:MARQUIS_QA_DIR,.}
+qa_file: iter_q  # iter_q | ss
+queries_with_subqueries: ${data.qa_dir}/MAGMaR2026_queries_with_subqueries.jsonl

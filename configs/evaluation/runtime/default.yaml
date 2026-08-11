@@ -1,0 +1,7 @@
+metrics:
+  - nDCG@10
+  - nDCG@20
+  - nDCG@100
+  - Recall@10
+  - Recall@20
+  - Recall@100

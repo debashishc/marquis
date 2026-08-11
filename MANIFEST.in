@@ -1,0 +1,14 @@
+include README.md
+include LICENSE
+include CITATION.cff
+include CONTRIBUTING.md
+include Makefile
+include .pre-commit-config.yaml
+recursive-include configs *.yaml
+recursive-include docs *.md
+recursive-include examples *.md *.json *.jsonl
+recursive-include scripts *.sh
+recursive-include slurm/templates *.sh *.sbatch
+recursive-include tests *.py *.json
+prune docs/*Submission*
+prune docs/*submission*

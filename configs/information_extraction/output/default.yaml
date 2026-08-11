@@ -1,0 +1,2 @@
+# Output directory. null → per-command/per-mode default (e.g. extract.MODE_DEFAULTS).
+out_dir: ${oc.env:MARQUIS_REPORT_OUTPUT_DIR,outputs/information_extraction}

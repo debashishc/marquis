@@ -1,0 +1,11 @@
+{
+  "query_id": "1",
+  "topic": "2025_Canadian_Federal_Election",
+  "pipeline": "general_note",
+  "retrieved_note_ids": ["gn-hol6y3QwX2Y-001", "gn-hol6y3QwX2Y-002"],
+  "scores": [0.92, 0.87],
+  "provenance": {
+    "retrieval_method": "token_overlap",
+    "created_at": "2026-03-07T00:00:00+00:00"
+  }
+}

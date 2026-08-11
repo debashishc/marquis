@@ -1,0 +1,6 @@
+data_dir: ${oc.env:MARQUIS_RLM_DATA_DIR}
+local_magmar_dir: ${oc.env:MARQUIS_LOCAL_MAGMAR_DIR,${data.data_dir}}
+video_root: ${oc.env:MAGMAR_VIDEO_ROOT,${data.data_dir}}
+topic_mapping: ${oc.env:MARQUIS_TOPIC_MAPPING,${oc.env:MAGMAR_TOPIC_MAPPING,${data.data_dir}/topic_video_mapping.json}}
+queries_jsonl: ${oc.env:MARQUIS_RLM_QUERIES_JSONL,${oc.env:MAGMAR_QUERIES_JSONL,${data.data_dir}/MAGMaR2026_queries.jsonl}}
+claims_jsonl: ${oc.env:MARQUIS_CLAIMS_PATH,${data.data_dir}/features/claims}

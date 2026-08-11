@@ -1,0 +1,64 @@
+# Shared VLM decoding knobs (extract + calibrate qwen scorer)
+fps: 1.0
+max_frames: 128
+enable_thinking: false
+temperature: 0.3
+top_p: 0.8
+top_k: 20
+max_tokens: null   # null → per-mode default (extract.MODE_DEFAULTS)
+seed: null         # null → per-mode default
+repetition_penalty: 1.0
+presence_penalty: 0.0
+verbose: false
+
+# extract
+include_topic_in_prompt: true   # general-notes: put topic in the prompt
+query_mode: single               # query-claims: single | expanded
+
+# Step-1.5 calibration (predict / calibrate / all)
+calibrate:
+  stage: all                 # predict | calibrate | all
+  artifact_type: query-claims  # general-notes | query-claims | claims | inferences
+  scorer_backend: unli       # unli | qwen_score
+  fps: 0.5
+  resized_height: 256
+  resized_width: 256
+  new_token_num: 100
+  new_token_prefix: "<CON_{idx}>"
+  device_map: auto
+  torch_dtype: auto
+  attn_implementation: sdpa
+  max_tokens: 2048
+  seed: 42
+  qwen_fps: 1.0
+
+# prepare-videos
+prepare_videos:
+  force: false   # re-materialize videos already present on disk
+  silent_for_missing: true   # prepare-audio: write a silent .m4a for clips with no audio track (has_audio=False)
+
+# packets
+packets:
+  stream: query-based  # general-note | query-based
+  top_k: 50
+  unli_threshold: null
+
+# QA (decompose / answer / iterative)
+qa:
+  qa_model: ${oc.env:MARQUIS_QA_MODEL,Qwen/Qwen3.5-2B}
+  whisper_model: ${oc.env:MARQUIS_QA_WHISPER_MODEL,medium.en}
+  fps: 1.0              # video frame sampling; must match Step-1 extraction
+  max_frames: 128       # cap frames so each keeps enough resolution to read detail
+  max_new_tokens: 1024  # qa-decompose
+  max_steps: 5          # qa (iterative) follow-up depth
+  # Video selection for qa-answer / qa. When the topic is covered by
+  # data.topic_mapping it is used directly; otherwise videos are dense-retrieved
+  # against precomputed video embeddings (only the query is embedded at runtime;
+  # iterative QA re-retrieves on every follow-up step).
+  retrieval:
+    mode: auto          # auto: mapping when available, else retrieve | topic | retrieval
+    video_embeddings: ${oc.env:MAGMAR_VIDEO_EMBEDDINGS,examples/data/video_embeddings.pt}
+    embed_model: ${oc.env:MARQUIS_QA_EMBED_MODEL,Qwen/Qwen2.5-Omni-7B}
+    embed_adapter: ${oc.env:MARQUIS_QA_EMBED_ADAPTER,Tevatron/OmniEmbed-v0.1}
+    top_k: 4            # videos kept per (sub-)query
+    sim_threshold: 0.1  # drop hits below this cosine similarity

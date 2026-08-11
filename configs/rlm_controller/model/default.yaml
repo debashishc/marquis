@@ -1,0 +1,11 @@
+root_backend: ${oc.env:MARQUIS_RLM_ROOT_BACKEND,openai}
+root_model: ${oc.env:MARQUIS_RLM_ROOT_MODEL,gpt-5}
+sub_backend: ${oc.env:MARQUIS_RLM_SUB_BACKEND,openai}
+sub_model: ${oc.env:MARQUIS_RLM_SUB_MODEL,gpt-5-mini}
+judge_model: ${oc.env:MARQUIS_RLM_JUDGE_MODEL,gpt-5-mini}
+
+# Paper-scale model identifiers from the arXiv system description. The current
+# public RLM adapter uses an OpenAI-compatible chat client; point the backend at
+# a local/open endpoint or override these model fields for paper-scale reruns.
+paper_root_model: Qwen/Qwen3.5-9B
+paper_sub_model: Qwen/Qwen3.5-27B

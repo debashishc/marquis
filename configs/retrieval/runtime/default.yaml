@@ -1,0 +1,25 @@
+# Fusion parameters
+rrf_k: 60          # RRF constant
+fusion_depth: 100  # rank depth kept per query
+
+# Single-method fusion (rrf command): rrf | weighted-rrf | sum | max | mean
+rrf_method: rrf
+
+# Query expansion (expand command)
+expansion:
+  max_new_tokens: 2048
+  temperature: 0.7
+  top_p: 0.9
+
+# QA-system video retrieval (retrieve command; OmniEmbed, separate from tevatron)
+retrieve:
+  top_k: 4             # videos kept per sub-query (fed to the QA generator)
+  sim_threshold: 0.1   # drop hits below this cosine similarity
+  download: false      # fetch missing videos with yt-dlp before indexing
+  downsample: false    # downsample videos to MAX_FRAMES before embedding
+
+# Evaluation (evaluate command); run_dir defaults to output.out_dir when null
+eval:
+  run_dir: null
+  run_file: null
+  output_csv: null

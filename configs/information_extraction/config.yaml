@@ -1,0 +1,15 @@
+defaults:
+  - data: default
+  - model: qwen3_5_vl
+  - runtime: default
+  - output: default
+  - launcher: local
+  - optional experiment: null
+  - _self_
+
+stage: information_extraction
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null

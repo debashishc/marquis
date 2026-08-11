@@ -1,0 +1,7 @@
+command: ${oc.env:MARQUIS_RLM_COMMAND,magmar-notes}
+query_id: ${oc.env:MARQUIS_QUERY_ID,1}
+max_steps: ${oc.env:MARQUIS_RLM_MAX_ITERATIONS,60}
+with_notes: true
+verbose: false
+vlm_backend: ${oc.env:MARQUIS_RLM_VLM_BACKEND,openai_vision}
+vlm_model: ${oc.env:MARQUIS_RLM_VLM_MODEL,null}

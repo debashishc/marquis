@@ -1,0 +1,6 @@
+# VLM for Step-1 extraction (general notes / query claims).
+backend: qwen_vl
+model: ${oc.env:MARQUIS_VLM_MODEL,Qwen/Qwen3.5-9B}
+download_dir: ${oc.env:HF_HOME,null}
+base_model: null
+lora_path: null

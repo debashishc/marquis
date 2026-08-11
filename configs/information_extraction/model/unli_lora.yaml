@@ -1,0 +1,6 @@
+# UNLI scorer (LoRA) for Step-1.5 video-grounded confidence prediction.
+backend: unli
+model: ${oc.env:MARQUIS_UNLI_MODEL,AdoptedIrelia/UNLI}
+base_model: ${oc.env:MARQUIS_UNLI_BASE,Qwen/Qwen2.5-Omni-3B}
+lora_path: ${oc.env:MARQUIS_UNLI_LORA_PATH,AdoptedIrelia/UNLI/lora}
+download_dir: ${oc.env:HF_HOME,null}

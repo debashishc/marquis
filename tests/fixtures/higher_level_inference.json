@@ -1,0 +1,11 @@
+{
+  "inference_id": "hli-general_note-1-001",
+  "query_id": "1",
+  "topic": "2025_Canadian_Federal_Election",
+  "claim": "Canadian media outlets provided extensive live coverage of the 2025 federal election results, indicating high public interest in the outcome.",
+  "source_ids": ["gn1a-hol6y3QwX2Y-001", "gn1a-hol6y3QwX2Y-002"],
+  "confidence": 0.80,
+  "is_post_grounded": true,
+  "calibration": null,
+  "stream": "general_note"
+}

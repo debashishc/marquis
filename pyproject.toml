@@ -1,0 +1,94 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "marquis"
+version = "0.1.0"
+description = "MARQUIS: A Three-Stage Pipeline for Video Retrieval-Augmented Generation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = ["multimodal", "retrieval-augmented-generation", "video", "MAGMaR", "RLM"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "numpy>=1.24",
+  "tqdm>=4.66",
+  "PyYAML>=6",
+  "hydra-core>=1.3",
+  "omegaconf>=2.3",
+  "rich>=13",
+]
+
+[project.urls]
+Repository = "https://github.com/debashishc/marquis"
+Paper = "https://arxiv.org/abs/2605.17640"
+HuggingFacePaper = "https://huggingface.co/papers/2605.17640"
+Benchmark = "https://github.com/rekriz11/MAGMAR_2026"
+
+[project.optional-dependencies]
+retrieval = ["ir-measures>=0.4,<0.5"]
+eval = ["ir-measures>=0.4,<0.5"]
+vlm = [
+  "torch>=2.11,<3",
+  "transformers>=5.9,<6",
+  "vllm>=0.22,<1",
+  "qwen-omni-utils>=0.0.9,<1",
+  "peft>=0.19,<1",
+]
+qa = [
+  "torch>=2.11,<3",
+  "transformers>=5.9,<6",
+  "openai-whisper>=20250625,<20270000",
+  "yt-dlp>=2026.3.17,<2027",
+  "qwen-omni-utils>=0.0.9,<1",
+  "peft>=0.19,<1",
+]
+api = ["openai>=2.40,<3"]
+rlm = ["openai>=2.40,<3", "python-dotenv>=1.2.2,<2", "opencv-python>=4.13,<5"]
+dev = ["pytest>=8", "ruff>=0.8", "pre-commit>=3.7"]
+all = [
+  "ir-measures>=0.4,<0.5",
+  "torch>=2.11,<3",
+  "transformers>=5.9,<6",
+  "vllm>=0.22,<1",
+  "qwen-omni-utils>=0.0.9,<1",
+  "peft>=0.19,<1",
+  "openai-whisper>=20250625,<20270000",
+  "yt-dlp>=2026.3.17,<2027",
+  "openai>=2.40,<3",
+  "python-dotenv>=1.2.2,<2",
+  "opencv-python>=4.13,<5",
+]
+
+[project.scripts]
+marquis-retrieve = "marquis.retrieval.cli:main"
+marquis-extract = "marquis.information_extraction.cli:main"
+marquis-generate = "marquis.article_generation.cli:main"
+marquis-rlm = "marquis.rlm_controller.cli:main"
+marquis-evaluate = "marquis.evaluation.cli:main"
+marquis-validate-contracts = "marquis.common.validate_contracts:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/marquis/**/prompts.py" = ["E501"]

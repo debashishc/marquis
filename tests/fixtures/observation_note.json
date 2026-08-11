@@ -1,0 +1,12 @@
+{
+  "note_id": "obs-hol6y3QwX2Y-001",
+  "video_id": "hol6y3QwX2Y",
+  "topic": "2025_Canadian_Federal_Election",
+  "modality": "visual",
+  "timestamp": [0.0, 15.0],
+  "text": "A female news anchor is seated at a desk with \"Decision Canada\" graphics displayed behind her.",
+  "extractor": "heuristic",
+  "confidence": null,
+  "source_path": "examples/videos/hol6y3QwX2Y.mp4",
+  "is_post_grounded": false
+}

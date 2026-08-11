@@ -1,0 +1,2 @@
+# Where fusion run files / qrels / expansion outputs are written.
+out_dir: ${oc.env:MARQUIS_RETRIEVAL_OUTPUT_DIR,${data.base_dir}}

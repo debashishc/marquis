@@ -1,0 +1,11 @@
+{
+  "note_id": "gn-hol6y3QwX2Y-001",
+  "video_id": "hol6y3QwX2Y",
+  "topic": "2025_Canadian_Federal_Election",
+  "claim": "Global National broadcast a segment titled \"Decision Canada\" covering the 2025 Canadian federal election results.",
+  "source_observation_ids": ["obs-hol6y3QwX2Y-001", "obs-hol6y3QwX2Y-002"],
+  "timestamp_union": [0.0, 30.0],
+  "calibration": null,
+  "extractor": "heuristic",
+  "is_post_grounded": true
+}

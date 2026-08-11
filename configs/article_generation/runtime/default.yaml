@@ -1,0 +1,39 @@
+max_claims_per_query: 25
+top_n_clusters: 5
+temperature: 0.7
+top_p: 0.9
+
+# qa strategy
+max_qa_per_query: 40
+qa_method: both  # baseline | ginger | both
+ginger:
+  cluster_max_tokens: 2048
+  cluster_temperature: 0.3
+  rank_max_tokens: 512
+  rank_temperature: 0.3
+  summarize_max_tokens: 256
+  summarize_temperature: 0.5
+  fluency_max_tokens: 1024
+  fluency_temperature: 0.7
+
+# bullet (note-taking infer→report→annotate) pipeline.
+# Model/cache come from the `model` group; out_dir from `output`; query_ids from
+# `data`. The remaining bullet-specific knobs live here.
+bullet:
+  stream: null     # general-note | query-based | null (legacy)
+  packets_dir: null
+  notes: null      # general notes JSONL  (general-note stream)
+  claims: null     # query-conditioned claims JSONL (query-based stream)
+  grounded: null   # grounded notes JSONL (legacy note-taking pipeline)
+  inferences: null # inferences dir from `infer` (annotate input)
+  reports_dir: null  # pre-generated report JSONs (legacy annotate input)
+  queries_jsonl: ${oc.env:MAGMAR_QUERIES_JSONL}
+  verbose: false
+  strict: false    # report step: exit non-zero on any citation error
+  infer:
+    temperature: 0.3
+    presence_penalty: 0.0
+    max_tokens: 2048
+  annotate:
+    temperature: 0.1
+    max_tokens: 1024

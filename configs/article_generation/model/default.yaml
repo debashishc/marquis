@@ -1,0 +1,13 @@
+backend: causal_lm
+model: ${oc.env:MARQUIS_GENERATION_MODEL,Qwen/Qwen3.5-9B}
+cache_dir: ${oc.env:HF_HOME,null}
+# VLM used by the bullet pipeline (infer/annotate); shares cache_dir above.
+vlm: ${oc.env:MARQUIS_VLM_MODEL,Qwen/Qwen3.5-9B}
+# Remote OpenAI-compatible API backend. When `api` is set (model.api=URL on
+# the CLI, or the --api flag), the bullet pipeline sends requests to that
+# endpoint instead of loading `vlm` onto local GPUs.
+api: ${oc.env:MARQUIS_API_BASE,null}
+# model ID as returned by <api>/models on the server
+api_model: ${oc.env:MARQUIS_API_MODEL,qwen-27b}
+# the LiteLLM proxy doesn't validate the key -- any non-empty string works
+api_key: ${oc.env:MARQUIS_API_KEY,dummy}
